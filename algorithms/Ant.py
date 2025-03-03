@@ -102,7 +102,7 @@ class Ant:
         possible_x,possible_y = self.get_next_coordinates()
 
         if (possible_x > WIDTH or possible_x < 0 or possible_y > HEIGHT or possible_y < 0):
-            self.angle += 180
+            self.angle += 180 + random.randint(-50,50)
             self.x , self.y = self.get_next_coordinates()
 
         self.x, self.y = self.get_next_coordinates()
