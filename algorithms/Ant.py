@@ -58,6 +58,8 @@ class Food:
         return distance < self.radius
 
 
+
+
 class Ant:
 
     def __init__(self,angle,x,y):
@@ -97,11 +99,10 @@ class Ant:
         if self.turn_cooldown > 0:
             self.turn_cooldown -= 1
 
-
         self.trail.append((self.x,self.y,255))
         possible_x,possible_y = self.get_next_coordinates()
 
-        if (possible_x > WIDTH or possible_x < 0 or possible_y > HEIGHT or possible_y < 0):
+        if possible_x > WIDTH or possible_x < 0 or possible_y > HEIGHT or possible_y < 0:
             self.angle += 180 + random.randint(-50,50)
             self.x , self.y = self.get_next_coordinates()
 
