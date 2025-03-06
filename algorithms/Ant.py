@@ -25,8 +25,7 @@ GREEN = (0, 255, 0)
 BLACK = (0,0,0)
 YELLOW = (255,222,33)
 
-center_of_screen_x, center_of_screen_y = WIDTH / 2, HEIGHT / 2
-
+center_of_screen_x , center_of_screen_y = WIDTH / 2, HEIGHT / 2
 
 class Food:
 
@@ -98,10 +97,11 @@ class Ant:
         if self.turn_cooldown > 0:
             self.turn_cooldown -= 1
 
+
         self.trail.append((self.x,self.y,255))
         possible_x,possible_y = self.get_next_coordinates()
 
-        if possible_x > WIDTH or possible_x < 0 or possible_y > HEIGHT or possible_y < 0:
+        if (possible_x > WIDTH or possible_x < 0 or possible_y > HEIGHT or possible_y < 0):
             self.angle += 180 + random.randint(-50,50)
             self.x , self.y = self.get_next_coordinates()
 
@@ -117,10 +117,10 @@ class Ant:
                 trail_surface.fill((*BLUE, fade_alpha))
                 surface.blit(trail_surface, (trail_x, trail_y))
 
+
         pygame.draw.rect(surface, self.color, (self.x, self.y, self.width, self.height))
 
-
-ants = [Ant(random.randint(1,360),random.randint(1,WIDTH),random.randint(1,HEIGHT)) for _ in range(1)]
+ants = [Ant(random.randint(1,360),random.randint(1,WIDTH),random.randint(1,HEIGHT)) for _ in range(30)]
 foods = [Food(random.randint(1,WIDTH) , random.randint(1,HEIGHT), 50 ) for _ in range(3)]
 
 # Game loop
@@ -144,6 +144,7 @@ while running:
     for ant in ants:
         ant.draw(screen)
         # Update the display
+
 
     pygame.display.flip()
 
